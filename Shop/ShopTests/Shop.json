@@ -1,0 +1,61 @@
+{
+  "company_name": "Savon de France",
+  "products": [
+    {
+      "id": "aloe-vera-bar",
+      "name": "Aloe Vera Bar",
+      "image": "aloe-vera-bar",
+      "price_cents": 550,
+      "currency": "USD"
+    },
+    {
+      "id": "amber-bar",
+      "name": "Amber Bar",
+      "image": "amber-bar",
+      "price_cents": 550,
+      "currency": "USD"
+    },
+    {
+      "id": "anise-bar",
+      "name": "Anise Bar",
+      "image": "anise-bar",
+      "price_cents": 550,
+      "currency": "USD"
+    },
+    {
+      "id": "apricot-bar",
+      "name": "Apricot Bar",
+      "image": "apricot-bar",
+      "price_cents": 550,
+      "currency": "USD"
+    },
+    {
+      "id": "blood-orange-bar",
+      "name": "Blood Orange Bar",
+      "image": "blood-orange-bar",
+      "price_cents": 550,
+      "currency": "USD"
+    },
+    {
+      "id": "chestnut-bar",
+      "name": "Chestnut Bar",
+      "image": "chestnut-bar",
+      "price_cents": 550,
+      "currency": "USD"
+    },
+    {
+      "id": "chocolate-bar",
+      "name": "Chocolate Bar",
+      "image": "chocolate-bar",
+      "price_cents": 550,
+      "currency": "USD"
+    },
+    {
+      "id": "coconut-bar",
+      "name": "Coconut Bar",
+      "image": "coconut-bar",
+      "price_cents": 550,
+      "currency": "USD"
+    }
+  ]
+}
