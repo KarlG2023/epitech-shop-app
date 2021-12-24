@@ -13,7 +13,7 @@ class DetailPresenterTests: XCTestCase {
     var presenter: DetailPresenter!
     var view = MockDetailViewController()
     var cacheManager = MockCacheManager()
-    var product = Product(id: "test", name: "Soap", currency: "USD", priceCents: 550, image: "test")
+    var product = Product(id: "test", name: "Soap", image: "USD", price_cents: 550, currency: "test")
 
     override func setUpWithError() throws {
         presenter = DefaultDetailPresenter(cacheManager: cacheManager, product: product)

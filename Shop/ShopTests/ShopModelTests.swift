@@ -55,10 +55,10 @@ class ShopModelTests: XCTestCase {
             // Get data from resource
             let data = try Data(contentsOf: resource)
             // Parse it
-            let response = try JSONDecoder().decode(Shop.self, from: data)
+            _ = try JSONDecoder().decode(Shop.self, from: data)
+        } catch {
             // Verify that decoding is failing and returning nil
             // TODO: Assert
-        } catch {
             XCTAssert(true, "nil")
         }
     }
