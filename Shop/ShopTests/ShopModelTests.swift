@@ -26,8 +26,20 @@ class ShopModelTests: XCTestCase {
         }
 
         // Get data from resource
+        let data = try Data(contentsOf: resource)
         // Parse it
+        let response = try JSONDecoder().decode(Shop.self, from: data)
         // Asserts: Verify the company name, the number of products, values of the first element.
+        XCTAssertEqual(response.company_name, "Savon de France")
+        XCTAssert(response.products.count == 8, "wrong number of products")
+        
+        let products = response.products.first
+        
+        XCTAssertEqual(products?.id, "aloe-vera-bar")
+        XCTAssertEqual(products?.name, "Aloe Vera Bar")
+        XCTAssert(products?.image == "aloe-vera-bar", "wrong product image")
+        XCTAssertEqual(products?.price_cents, 550)
+        XCTAssertEqual(products?.currency, "USD")
         // TODO: Assert
     }
 
@@ -39,9 +51,15 @@ class ShopModelTests: XCTestCase {
             return
         }
 
-        // Get data from resource
-        // Parse it
-        // Verify that decoding is failing and returning nil
-        // TODO: Assert
+        do {
+            // Get data from resource
+            let data = try Data(contentsOf: resource)
+            // Parse it
+            let response = try JSONDecoder().decode(Shop.self, from: data)
+            // Verify that decoding is failing and returning nil
+            // TODO: Assert
+        } catch {
+            XCTAssert(true, "nil")
+        }
     }
 }
