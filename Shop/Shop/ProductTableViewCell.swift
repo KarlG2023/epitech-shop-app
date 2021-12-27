@@ -39,7 +39,7 @@ class ProductTableViewCell: UITableViewCell {
         super.layoutSubviews()
 
         productImageView.frame = CGRect(
-            x: bounds.width - Metrics.contentMargins.right - Metrics.imageSize.width,
+            x: Metrics.contentMargins.left,
             y: Metrics.contentMargins.top,
             width: Metrics.imageSize.width,
             height: Metrics.imageSize.height
@@ -47,7 +47,7 @@ class ProductTableViewCell: UITableViewCell {
         productImageView.backgroundColor = .darkGray
 
         nameLabel.frame = CGRect(
-            x: Metrics.contentMargins.left,
+            x: Metrics.contentMargins.left * 2 + Metrics.imageSize.width,
             y: Metrics.contentMargins.top + Metrics.titleToSubtitleMargin,
             width: 0,
             height: 0
@@ -60,7 +60,7 @@ class ProductTableViewCell: UITableViewCell {
         )
 
         priceLabel.frame = CGRect(
-            x:  Metrics.contentMargins.left,
+            x: Metrics.contentMargins.left * 2 + Metrics.imageSize.width,
             y: Metrics.titleToSubtitleMargin + nameLabel.frame.origin.y + nameLabel.frame.height,
             width: 0,
             height: 0
