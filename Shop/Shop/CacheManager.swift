@@ -13,10 +13,12 @@ protocol CacheManaging {
 class CacheManager: CacheManaging {
 
     func save<T: Codable>(_ value: T?, forKey key: String) {
-
+        UserDefaults.standard.set(value, forKey: key)
     }
 
     func value<T: Codable>(forKey key: String, type: T.Type) -> T? {
-        return nil
+        return UserDefaults.standard.integer(forKey: key) as? T
     }
 }
+
+// https://stackoverflow.com/questions/30041765/swift-how-to-store-user-preferences

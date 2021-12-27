@@ -93,8 +93,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
         // TODO: Get product tapped
         // TODO: Navigate to detail view controller
-        let productTaped = shop.products[indexPath.row]
-        navigationController?.pushViewController(DetailViewController(dependencies: dependencies, product: productTaped), animated: true)
+        let selection = shop.products[indexPath.row]
+        navigationController?.pushViewController(DetailViewController(dependencies: dependencies, product: selection), animated: true)
     }
 }
 

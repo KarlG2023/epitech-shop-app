@@ -16,23 +16,33 @@ class DefaultDetailPresenter: DetailPresenter {
 
     func viewDidLoad() {
         // TODO: Get quantity value from cache
-        let quantity = 0
-
-        view?.apply(product: product, quantity: quantity)
+        let quantity = cacheManager.value(forKey: product.id, type: Int.self)
+        
+        view?.apply(product: product, quantity: quantity ?? 0)
     }
 
     func didTapAddButton() {
         // TODO: Update quantity value
-        let quantity = 0
+        var quantity = 0
+        quantity = cacheManager.value(forKey: product.id, type: Int.self) ?? 0
+        if quantity < 9 {
+            quantity += 1
+        }
+        cacheManager.save(quantity, forKey: product.id)
 
-        view?.apply(product: product, quantity: quantity)
+        view?.apply(product: product, quantity: quantity )
     }
 
     func didTapRemoveButton() {
         // TODO: Update quantity value
-        let quantity = 0
+        var quantity = 0
+        quantity = cacheManager.value(forKey: product.id, type: Int.self) ?? 0
+        if quantity > 0 {
+            quantity -= 1
+        }
+        cacheManager.save(quantity, forKey: product.id)
 
-        view?.apply(product: product, quantity: quantity)
+        view?.apply(product: product, quantity: quantity )
     }
 }
 
