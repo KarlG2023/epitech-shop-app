@@ -31,35 +31,32 @@ protocol NetworkManaging {
 }
 
 public class NetworkManager: NetworkManaging {
+    
+    let session: URLSession
 
     init() {
-        
+        self.session = URLSession(configuration: .default)
     }
 
     func data<T: Decodable>(from url: URL, type: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        
-        let session = URLSession.shared
 
-        let task = session.dataTask(with: url) { data, response, error in
-            if error != nil || data == nil {
-                print("Client error!")
-                return
+        self.session.dataTask(with: url) { data, response, error in
+
+            if let error = error {
+                completion(.failure(.error(error)))
             }
 
-//            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                    print("Server error!")
-//                return
-//            }
-
-            do {
-                let jsonData = try JSONDecoder().decode(Shop.self, from: data!)
-
-                completion(Result<T, NetworkError>.success(jsonData as! T))
-            } catch {
-                completion(Result<T, NetworkError>.failure(NetworkError.malformedData))
-                print("JSON error: \(error.localizedDescription)")
+            if let data = data {
+                do {
+                    let jsonData = try JSONDecoder().decode(type, from: data)
+                    
+                    completion(.success(jsonData))
+                } catch {
+                    completion(.failure(.malformedData))
+                }
+            } else {
+                completion(.failure(.noData))
             }
-        }
-        task.resume()
+        }.resume()
     }
 }
